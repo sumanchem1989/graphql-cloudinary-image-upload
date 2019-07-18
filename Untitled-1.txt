@@ -1,0 +1,26 @@
+1. database schema: photo: string
+2. typedefs: type User{
+    photo: String
+}
+3. mutation: type Mutation{
+    uploadImage(fileName: String): String!
+}
+4. yarn add cloudinary to work with node clodinary sdk
+5. CLOUD_NAME:
+   API_KEY:
+   API_SECRET: 
+from dashboard of clodinary
+
+6. Cloudinary configuration:
+        const cloudinary = require("clodinary")
+        cloudinary.config({
+            cloud_name: process.env.CLOUD_NAME,
+            api_key: process.env.API_KEY,
+            api_secret: process.env.API_SECRET
+        })
+7. Muation resolver:
+    uploadImage:(parent, { fileName }, { models, me }) => {
+        if(!me){
+            return throw new Error("Not Authenticated)
+        }
+    }
